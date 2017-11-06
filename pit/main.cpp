@@ -1,1 +1,5 @@
-#include <>
+#include <>}
+        }
+	name = argv[1];
+	
+}
