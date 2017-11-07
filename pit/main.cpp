@@ -109,4 +109,4 @@ int main (int argc, char** argv) {
 	delete[] arrX, arrY;
 
 }
-//TODO: разобратся с графиком
+//TODO: разобратся с графиком(gnuplot, qt или matlab?)
