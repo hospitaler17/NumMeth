@@ -1,10 +1,11 @@
 /*  линейное уравнение (уравнение прямой) Ax+By+C=0  */
 /* при этом (y1-y2)*x + (x2-x1)*y + (x1*y2-x2*y1) = 0 */
-/* y = (Ax+C)/B */
+/* y = -1*(Ax+C)/B */
 
 /*==============================================================================*/
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -20,32 +21,34 @@ long double findY(long double X1, long double Y1, long double X2, long double Y2
 int main (int argc, char** argv) {
 	int i, ch, j, count = 0;// счетчики
 	long double X, Y; // х и у для обработки
-	char name[] = "dots.txt"; // имя входного файла
-	ifstream f; // файл
-	f.open (name); // блок открытия файла
-	if (!f.is_open()) { // проверка файла
+	char name1[] = "dots.txt"; // имя входного файла
+	char name2[] = "sort_dots.txt"; // имя входного файлa
+	ifstream fi; // поток ввода
+	ofstream fo; // поток вывода
+	fi.open (name1); // блок открытия файла
+	if (!fi.is_open()) { // проверка файла
 		cerr << "Не удалось открыть файл!\n";
 		return 0;
 	}
 	else
-		cout << "Файл "<< name << " успешно открыт!" << '\n';
-	while (!f.eof()) {
-		f >> X;
-		f >> Y;
+		cout << "Файл "<< name1 << " успешно открыт!" << '\n';
+	while (!fi.eof()) {
+		fi >> X;
+		fi >> Y;
 		count++;
 	}
 	count--;// из-за перехода на след строку(
 	std::cout << "Всего точек "<< count << '\n';
-	f.clear();// отчистим поток
-	f.seekg(0);// двинемся в начало файла
+	fi.clear();// отчистим поток
+	fi.seekg(0);// двинемся в начало файла
 
 	long double *arrX = new long double[count];// массив для хранения точек
 	long double *arrY = new long double[count];
 	for (i = 0; i < count; i++) {
-		f >> arrX[i];
-		f >> arrY[i];
+		fi >> arrX[i];
+		fi >> arrY[i];
 	}
-	f.close();
+	fi.close();
 	for (i = 0; i < count; i++)
 		std::cout << "Найдена точка ( " <<arrX[i]<< " ,\t "<<arrY[i]<<" \t)\n";
 	std::cout << "Точки загружены в память" << '\n';
@@ -68,9 +71,15 @@ int main (int argc, char** argv) {
 	for (i = 0; i < count; i++) {
 		std::cout <<i+1<< ": ( " << arrX[i] << " ,\t "<<arrY[i]<<" \t)\n";
 	}
-	std::cout << "Точки отсортированы" << '\n';
+	fo.open(name2);// запишем в файл
+	for (i = 0; i < count; i++) {
+		fo << arrX[i] << ' ' << arrY[i] << '\n';
+	}
+	fo.close();
+
+	std::cout << "Точки отсортированы!" << '\n' ;
 	while (true) {
-		std::cout << "+++++++++++++++++++++++++++++++++++++++++" << '\n';
+		std::cout << '\n' << "+++++++++++++++++++++++++++++++++++++++++" << '\n';
 		std::cout << "1: Найти Y по X" << '\n';
 		std::cout << "2: Нарисовать график" << '\n';
 		std::cout << "0: Выход" << '\n';
@@ -82,7 +91,7 @@ int main (int argc, char** argv) {
 				std::cout << "Введите X: ";
 				std::cin >> X;
 				if(X < arrX[0] || X > arrX[count]){
-					std::cout << "Данный X не входит в интервал точек!" << '\n';
+					std::cout << "Данный X не входит в интервал всех данных точек!" << '\n';
 					break;
 				}
 				for (i = 0; i < count; i++) {
@@ -96,7 +105,9 @@ int main (int argc, char** argv) {
 				}
 				break;
 			case 2:// Рисуем график
-				std::cout << "Пока не работает ;(" << '\n';
+				system("gnuplot commands.plot");
+				system("shotwell pit.png");
+				//std::cout << "Пока не работает ;(" << '\n';
 				break;
 			case 0:// Выход!
 				return 0;
@@ -109,4 +120,4 @@ int main (int argc, char** argv) {
 	delete[] arrX, arrY;
 
 }
-//TODO: разобратся с графиком(gnuplot, qt или matlab?)
+//TODO: Ввести свои точки в файл dots.txt
