@@ -106,7 +106,7 @@ int main (int argc, char** argv) {
 				break;
 			case 2:// Рисуем график
 				system("gnuplot commands.plot");
-				system("shotwell pit.png");
+				system("xdg-open pit.png");
 				//std::cout << "Пока не работает ;(" << '\n';
 				break;
 			case 0:// Выход!
