@@ -120,4 +120,3 @@ int main (int argc, char** argv) {
 	delete[] arrX, arrY;
 
 }
-//TODO: Ввести свои точки в файл dots.txt
