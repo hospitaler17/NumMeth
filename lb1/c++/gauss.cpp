@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
 	}
 	else
 		cout << "Файл "<< filename << " успешно открыт!" << '\n';
+	std::cout << "=================================================" << '\n';
 	while (!fin.eof()) {
 		fin >> tmp_doub1;
 		count++;
@@ -111,6 +112,7 @@ int main(int argc, char *argv[]) {
     	}
 		L++;
 	}
+	std::cout << "=================================================" << '\n';
 	unsigned int end_time = clock(); // конечное время
 	unsigned int search_time = end_time - start_time; // искомое время
 	std::cout << "\nВремя, затраченное на прямой ход Гаусса: " << search_time << " (мс)";
@@ -136,14 +138,15 @@ int main(int argc, char *argv[]) {
 	}
 	end_time = clock();
 	search_time = end_time - start_time;
+	std::cout << "=================================================" << '\n';
 	cout << "\nВремя, затраченное на обратный ход Гаусса: " << search_time << " (мс)" << endl;
-
 	cout << "\nРезультаты вычислений: " << endl;
 	for(i=0; i<count; i++) {
 		cout << fixed << setprecision(5) << "x" << i << " = " << x[i] << endl;
 	}
 	double s[count];
 	double fault[20];
+	std::cout << "=================================================" << '\n';
 	cout << "\nВектор невязки: " << endl;
 	// вычисление вектора невязки
 	for(i=0; i<count; i++) {
@@ -162,8 +165,8 @@ int main(int argc, char *argv[]) {
     		max_el = fabs(s[i]);
     	}
 	}
-	std::cout << "Норма:" << '\n';
-	cout << "\nd = " << fabs(s[max_el_row]) << endl << endl;
+	std::cout << "\nНорма:" << '\n';
+	cout << "d = " << fabs(s[max_el_row]) << endl << endl;
 
 	delete matr;
 	delete matrix1;
