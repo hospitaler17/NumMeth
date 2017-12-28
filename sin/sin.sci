@@ -1,15 +1,15 @@
 x = -%pi*5:0.1:%pi*5;
-xlabel('X');
-ylabel('Y');
+xlabel('X(мм)');
+ylabel('Y(мм)');
 title('Графики синуса и синусов, разложенных в ряды Тейлора')
 xset("thickness",3);
-y = sin(x);
 y1 = x;
 y3 = x-(x.^3)/6;
 y5 = x-(x.^3)/6+(x.^5)/factorial(5);
 y7 = x-(x.^3)/6+(x.^5)/factorial(5)-(x.^7)/factorial(7);
 y9 = x-(x.^3)/6+(x.^5)/factorial(5)-(x.^7)/factorial(7)+(x.^9)/factorial(9);
 y11 = x-(x.^3)/6+(x.^5)/factorial(5)-(x.^7)/factorial(7)+(x.^9)/factorial(9)-(x.^11)/factorial(11);
+y = sin(x);
 plot2d(x, y, style=[color("black")], rect=[-16,-4, 16,4]);
 plot2d(x, y1, style=[color("red")], rect=[-16,-4, 16,4]);
 plot2d(x, y3, style=[color("pink")], rect=[-16,-4, 16,4]);

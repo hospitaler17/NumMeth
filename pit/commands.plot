@@ -1,5 +1,5 @@
-set xlabel "x"
-set ylabel "y"
+set xlabel "x(мм)"
+set ylabel "y(мм)"
 set terminal png
 set output "pit.png"
 

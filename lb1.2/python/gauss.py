@@ -88,6 +88,7 @@ def vect(arr, b, x, f, n, delta): # вектор невязки, норма
 
 
     for i in range(n):
+		f[i] = 0.0
 		for j in range(n):
 			f[i] = f[i] + arr[i][j] * x[j]
 		f[i] = f[i] - b[i]

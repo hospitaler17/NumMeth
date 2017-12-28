@@ -77,7 +77,6 @@ for i = 1:size
 	S(i) = 0;
 	for j = 1:size
 		S(i) = S(i) + Z(i,j)*Y(j);
-		disp("***");
 		end;
 	S(i) = Z(i,size+1) - S(i);
 	end;

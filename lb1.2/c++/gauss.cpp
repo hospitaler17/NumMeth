@@ -12,7 +12,7 @@ using namespace std;
 int main (int argc, char **argv)
 {
 	int count, k, p, l, i, j, AKK, M;
-	double **A, *Z, *b, **U, *q, *x, AMAIN, delta = 0, *F;
+	double **A, *b, **U, *q, *x, AMAIN, delta = 0, *F;
 	double tmp_doub1 = 0, tmp_doub2 = 0, tmp_doub3 = 0;
 	int *IOR;
 	float time0, time1;
@@ -140,23 +140,13 @@ int main (int argc, char **argv)
 		cout << ">>> x" << i+1 << " = " << x[i] << endl;
 	// Вычисление нормы вектора:
 	F = new double [count];
-	Z = new double [count];
 	std::cout << "Вектора невязки:" << '\n';
-	for (i = 0; i < count; i++)
-	{
+	for (i = 0; i < count; i++){
 		F[i] = 0;
-		for (j = 0; j < count; j++){
+		for (j = 0; j < count; j++)
 			F[i] = F[i] + A[i][j] * x[j];
-			std::cout << "f = " << F[i] <<'\n';
-		}
-		// b[i] = 10
-
-		// std::cout << "*4-4 = " << 4-4 <<'\n';
-		// std::cout << "*Z = " << Z[i] <<'\n';
-		// std::cout << "*b = " << b[i] <<'\n';
-
-		Z[i] = F[i] - b[i]+1;
-		std::cout << ">>> " << Z[i] <<'\n';
+		F[i] = F[i] - b[i];
+		std::cout << ">>> " << F[i] <<'\n';
 		if (F[i] > delta)
 			delta = F[i];
 	}
