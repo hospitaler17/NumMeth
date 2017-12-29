@@ -70,22 +70,6 @@ def gauss2(arr, b, x, cu, n): # Обратный ход Гаусса
         cu[0] -= 1
 
 def vect(arr, b, x, f, n, delta): # вектор невязки, норма
-    # q = [15.71, 43.78, 37.11]
-    #
-    # print(q)
-    # print(arr)
-    # for i in range(n):
-    #     for j in range(n):
-    #         f[i] = f[i] + arr[i,j]*x[j]
-    #         print(f[i])
-    #     print(f[i],"-", q[i])
-    #     f[i] = f[i] - q[i]
-    # delta[0] = math.fabs(f[0])
-    # for i in range(n):
-    #     if delta[0] < math.fabs(f[i]):
-    #     	delta[0] = math.fabs(f[i])
-    #     #print(delta[0])
-
 
     for i in range(n):
 		for j in range(n):
