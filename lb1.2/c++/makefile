@@ -1,2 +1,2 @@
 all:
-	g++ iakobi.cpp program.cpp -o iakobi
+	g++ zeidel.cpp -o zeidel
