@@ -5,7 +5,9 @@
 using namespace std;
 
 int main(int argc, char const *argv[]) {
-	double x1 = 1, x2 = 0; // начальное приближение (дано)
+	double x1 = 1;
+	double x2 = 0; // начальное приближение (дано)
+	// double x2 = 1; // проверочное значение для x2
 	double x_k1, x_k2;
 	double e1 = 0.000000001, e2 = 0.000000001; // конст, опр. погрешность
 	int NIT = 100; // макс итератор
